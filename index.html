@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Budeget App</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="budget__content">
+        <h3 class="budget__heading">Avaible Budeget in September</h3>
+        <h1 class="budget__price">+ 123</h1>
+        <div class="budget__list budget__list--green">
+          Income <span class="price" id="income__price">+3333</span>
+        </div>
+        <div class="budget__list budget__list--red">
+          Expense <span class="price" id="expense__price">+3333</span>
+        </div>
+      </div>
+    </header>
+    <nav class="add__budget">
+      <input type="number" class="add__symbol" min="1" max="2" />
+      <input type="text" class="add__details" placeholder="Add Description" />
+      <input type="text" class="add__price" placeholder="Value" />
+      <img
+        src="https://image.flaticon.com/icons/svg/1828/1828640.svg"
+        alt="button"
+        class="add__btn"
+      />
+    </nav>
+    <main class="incomeExpense">
+      <section class="income">
+        <h3 class="income___heading">Income</h3>
+        <div class="income__description">
+          <!-- <div class="details">
+            Projects Income<span class="detail__price">+ 2.500</span>
+          </div> -->
+        </div>
+      </section>
+      <section class="expense">
+        <h3 class="expense__heading">Expense</h3>
+        <div class="expense__description">
+          <!-- <div class="details">
+            Grocery Shoppinng<span class="detail__price detail__price--red"
+              >- 2.500</span>
+          </div> -->
+        </div>
+      </section>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

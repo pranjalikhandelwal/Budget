@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+.header {
+  height: 40vh;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.411), rgba(0, 0, 0, 0.281)),
+    url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+.budget__content {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  text-align: center;
+}
+.budget__heading {
+  color: #eee;
+  font-weight: 100;
+  font-size: 1rem;
+}
+.budget__price {
+  color: #eee;
+  font-weight: 100;
+  font-size: 4rem;
+}
+.budget__list {
+  margin: 0.7rem;
+  height: 3rem;
+  padding: 1rem 1rem;
+  text-align: left;
+  border-radius: 2px;
+  position: relative;
+}
+.budget__list--green {
+  background-color: yellowgreen;
+}
+.budget__list--red {
+  background-color: tomato;
+}
+.price {
+  position: absolute;
+  right: 8px;
+  color: #eee;
+}
+
+/* Navigation Section */
+.add__budget {
+  background-color: #eee;
+  padding: 1rem 4rem;
+  text-align: center;
+  position: relative;
+}
+.add__symbol {
+  width: 3rem;
+  height: 2rem;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+.add__details {
+  width: 30%;
+  height: 2rem;
+  border: none;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+}
+.add__price {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+}
+.add__btn{
+  width: 2rem;
+  height: 1.8rem;
+  position: absolute;
+  right: 23rem;
+  cursor: pointer;
+}
+
+/* Income Section */
+.incomeExpense {
+  display: flex;
+  justify-content: space-between;
+  /* text-align: center; */
+  padding: 1rem 8rem;
+}
+.income {
+  width: 45%;
+}
+.income___heading {
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: yellowgreen;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #888;
+}
+
+/* Expense Section */
+.expense {
+  width: 45%;
+}
+.expense__heading {
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: tomato;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #888;
+}
+.details{
+    padding: .7rem;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+.detail__price{
+position: absolute;
+right: 5px;
+color: yellowgreen;
+}
+
+.detail__price--red{
+    color: tomato;
+}
+.details:hover{
+  color: aqua;
+  cursor: pointer;
+}

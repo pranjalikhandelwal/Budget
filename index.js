@@ -18,6 +18,10 @@ document.getElementById("income__price").innerHTML = 0;
 document.getElementById("expense__price").innerHTML = 0;
 document.querySelector(".budget__price").innerHTML = 0;
 
+var deleteDetails;
+// deleteDetails = document.querySelectorAll('.details');
+
+
 function addList() {
 
     const symbol = document.querySelector('.add__symbol').value;
@@ -27,6 +31,15 @@ function addList() {
 
     detailArray.push(d1);    
 
+    displayAddDetails();
+
+
+  
+}
+   
+
+
+function displayAddDetails(){
     income = dispayIncomeDetails(detailArray);
     expense = dispayExpenseDetails(detailArray);
     incomeValue = displayIncomeValue(detailArray);
@@ -38,14 +51,37 @@ function addList() {
     document.getElementById("income__price").innerHTML = incomeValue;
     document.getElementById("expense__price").innerHTML = expenseValue;
     document.querySelector(".budget__price").innerHTML = totalIE;
+
+
+    // Delete List from Income and Expense section
+
+    deleteDetails = document.querySelectorAll('.details');
+    deleteDetails.forEach(element => element.addEventListener('click', deleteList));
+
+    function deleteList() {
+        var description = this.querySelector('.description').innerText;
+        matchFind(description);
+
+        function matchFind(wordToMatch) {
+
+            var index = detailArray.findIndex(function (element) {
+                console.log(element.description.includes(wordToMatch));
+                return element.description.includes(wordToMatch);
+            });
+            detailArray.splice(index, 1);
+            console.log(detailArray);
+            displayAddDetails();
+        }
+
+    }
 }
 
 function dispayIncomeDetails(detailArray) {
     return detailArray.map(detail => {
         if (detail.symbol === '1') {
 
-            return `<div class="details">${detail.description}
-                <span class="detail__price">+ ${detail.value}</span></div>`;
+            return `<div class="details"><p class="description">${detail.description}</p>
+                <p class="detail__price">+ ${detail.value}</p></div>`;
         }
     }).join('');
 }
@@ -53,8 +89,8 @@ function dispayIncomeDetails(detailArray) {
 function dispayExpenseDetails(detailArray) {
     return detailArray.map(detail => {
         if (detail.symbol !== '1') {
-            return `<div class="details">${detail.description}
-                <span class="detail__price detail__price--red">- ${detail.value}</span></div>`;
+            return `<div class="details"><p class="description">${detail.description}</p>
+                <p class="detail__price detail__price--red">- ${detail.value}</p></div>`;
         }
     }).join('');
 }

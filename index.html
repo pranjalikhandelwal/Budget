@@ -20,7 +20,11 @@
       </div>
     </header>
     <nav class="add__budget">
-      <input type="number" class="add__symbol" min="1" max="2" />
+      <select class="add__symbol">
+        <option class="type" value="inc">+</option>
+        <option  class="type" value="dec">-</option>
+      </select>
+      <!-- <input type="number" class="add__symbol" min="1" max="2" /> -->
       <input type="text" class="add__details" placeholder="Add Description" />
       <input type="text" class="add__price" placeholder="Value" />
       <img

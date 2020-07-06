@@ -9,18 +9,13 @@ function Details(symbol, description, value) {
     this.value = value;
 }
 var detailArray = [];
-var income, expense, incomeValue, expenseValue, totalIE;
+var income, expense, incomeValue, expenseValue, totalIE, deleteDetails;
 const addDetails = document.querySelector('.add__btn');
 addDetails.addEventListener('click', addList);
-
 
 document.getElementById("income__price").innerHTML = 0;
 document.getElementById("expense__price").innerHTML = 0;
 document.querySelector(".budget__price").innerHTML = 0;
-
-var deleteDetails;
-// deleteDetails = document.querySelectorAll('.details');
-
 
 function addList() {
 
@@ -30,16 +25,12 @@ function addList() {
     var d1 = new Details(symbol, description, parseInt(value));
 
     detailArray.push(d1);    
-
-    displayAddDetails();
-
-
-  
+    displayAddDetails(); 
 }
-   
-
 
 function displayAddDetails(){
+//  Add List income and Expenses and also calculation
+   
     income = dispayIncomeDetails(detailArray);
     expense = dispayExpenseDetails(detailArray);
     incomeValue = displayIncomeValue(detailArray);
@@ -53,23 +44,25 @@ function displayAddDetails(){
     document.querySelector(".budget__price").innerHTML = totalIE;
 
 
-    // Delete List from Income and Expense section
+// Delete List from Income and Expense section
 
     deleteDetails = document.querySelectorAll('.details');
     deleteDetails.forEach(element => element.addEventListener('click', deleteList));
 
     function deleteList() {
         var description = this.querySelector('.description').innerText;
-        matchFind(description);
+        var value = this.querySelector('.detail__price').innerText.slice(2);
+               
+        matchFind(description,value);
 
-        function matchFind(wordToMatch) {
+        function matchFind(wordToMatch,valueToMatch) {
 
             var index = detailArray.findIndex(function (element) {
-                console.log(element.description.includes(wordToMatch));
-                return element.description.includes(wordToMatch);
+                return element.description.includes(wordToMatch) ;
+                      
             });
+                       
             detailArray.splice(index, 1);
-            console.log(detailArray);
             displayAddDetails();
         }
 
@@ -78,7 +71,7 @@ function displayAddDetails(){
 
 function dispayIncomeDetails(detailArray) {
     return detailArray.map(detail => {
-        if (detail.symbol === '1') {
+        if (detail.symbol === 'inc') {
 
             return `<div class="details"><p class="description">${detail.description}</p>
                 <p class="detail__price">+ ${detail.value}</p></div>`;
@@ -88,7 +81,7 @@ function dispayIncomeDetails(detailArray) {
 
 function dispayExpenseDetails(detailArray) {
     return detailArray.map(detail => {
-        if (detail.symbol !== '1') {
+        if (detail.symbol !== 'inc') {
             return `<div class="details"><p class="description">${detail.description}</p>
                 <p class="detail__price detail__price--red">- ${detail.value}</p></div>`;
         }
@@ -97,7 +90,7 @@ function dispayExpenseDetails(detailArray) {
 
 function displayIncomeValue(detailArray) {
     var income = detailArray.filter((detail) => {
-        return detail.symbol === '1';
+        return detail.symbol === 'inc';
     });
 
     return income.reduce(function (totalIncome, currentValue) {
@@ -109,7 +102,7 @@ function displayIncomeValue(detailArray) {
 
 function displayExpenseValue(detailArray) {
     var expense = detailArray.filter((detail) => {
-        return detail.symbol !== '1';
+        return detail.symbol !== 'inc';
     });
 
     return expense.reduce(function (totalIncome, currentValue) {
@@ -120,25 +113,3 @@ function displayExpenseValue(detailArray) {
 function displayTotalIE(income, expense) {
     return income - expense
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

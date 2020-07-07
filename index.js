@@ -17,14 +17,21 @@ document.getElementById("income__price").innerHTML = 0;
 document.getElementById("expense__price").innerHTML = 0;
 document.querySelector(".budget__price").innerHTML = 0;
 
+//Add Focus on desription
+document.querySelector('.add__details').focus();
 function addList() {
 
     const symbol = document.querySelector('.add__symbol').value;
     const description = document.querySelector('.add__details').value;
     const value = document.querySelector('.add__price').value;
     var d1 = new Details(symbol, description, parseInt(value));
-
     detailArray.push(d1);    
+
+    // Clear input field
+    document.querySelector('.add__details').value="";
+    document.querySelector('.add__price').value='';
+    // After add in list focus back in description input
+    document.querySelector('.add__details').focus();
     displayAddDetails(); 
 }
 
@@ -33,8 +40,10 @@ function displayAddDetails(){
    
     income = dispayIncomeDetails(detailArray);
     expense = dispayExpenseDetails(detailArray);
+// header section show total income and expenses
     incomeValue = displayIncomeValue(detailArray);
     expenseValue = displayExpenseValue(detailArray);
+//  Total income - expense
     totalIE = displayTotalIE(incomeValue, expenseValue);
 
     document.querySelector('.income__description').innerHTML = income;
